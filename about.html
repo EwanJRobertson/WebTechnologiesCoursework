@@ -7,11 +7,12 @@
   <title>Cave</title>
   <link rel="icon" href="./assets/images/terminal-on.png">
 
-  <link href="./assets/css/bootstrap.min.css" rel="stylesheet">
-  <link href="./assets/css/cave.css" rel="stylesheet">
+  <link href="./assets/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="./assets/dist/css/cave.css" rel="stylesheet">
 
-  <script type="text/javascript" src="./assets/js/jquery-3.6.0.min.js"></script>
-  <script type="text/javascript" src="./assets/js/cave.js"></script>
+  <script type="text/javascript" src="./assets/jquery-3.6.0.min.js"></script>
+  <script type="text/javascript" src="./assets/dist/js/cave.js"></script>
+  <script src="./assets/dist/js/bootstrap.bundle.min.js"></script>
 
   <script type="text/javascript">
     $(document).ready(function () {
@@ -22,6 +23,7 @@
 </head>
 
 <body class="d-flex flex-column h-100 bg-dark text-white msgs-overflow">
+
   <svg style="display: none;">
     <symbol id="home" viewBox="0 0 16 16">
       <path fill="#fff"
@@ -48,19 +50,23 @@
   </header>
 
   <main>
+
     <div class="container">
+
       <div class="d-flex">
         <div class="flex-column" style="width: 4.5rem;">
           <ul class="nav nav-flush flex-column mb-auto text-center">
             <li class="nav-item">
-              <a href="./index.html" class="nav-link active py-3" title="Home">
+              <a href="./index.html" class="nav-link active py-3" title="Home" data-bs-toggle="tooltip"
+                data-bs-placement="right">
                 <svg class="bi" width="24" height="24">
                   <use xlink:href="#home" />
                 </svg>
               </a>
             </li>
             <li>
-              <a href="#" id="audiomute" onclick="Cave.mute();" class="nav-link py-3" title="Audio">
+              <a href="#" id="audiomute" onclick="Cave.mute();" class="nav-link py-3" title="Audio"
+                data-bs-toggle="tooltip" data-bs-placement="right">
                 <svg class="bi" width="24" height="24">
                   <use xlink:href="#volume-on" />
                 </svg>
@@ -69,122 +75,150 @@
           </ul>
         </div>
 
-        <div class="area mb-4">
-          <div class="row align-items-center p-5">
-            <div class="col">
-              <img src="./assets/images/playerstand.png" class="d-block mx-lg-auto img-fluid" alt="player" width="100"
-                height="100" loading="lazy" />
-            </div>
-            <div class="col-lg-6">
-              <h1 class="display-5 fw-bold">About</h1>
-              <p>
-                Cave is a browser-based choose your own adventure game, created for my Web Technologies coursework.
-                The goal of the game is to escape the cave, that the player has found themselves in, with data from a
-                terminal that sits in the cave.
-                The choices you make throughout the game affect your future choices and the overall outcome of the
-                story.
-              </p>
-            </div>
-          </div>
+        <div id="mainArea">
 
-          <div class="divider"></div>
-
-          <div class="row justify-content-center p-5">
-            <div class="col-8">
-              <h1 class="display-5 fw-bold">Instructions</h1>
-              <p>
-                The game is split into two areas. The "game area" where the pictures are display,
-                and the "messages" where any decisions and text is displayed.
-              </p>
-            </div>
-          </div>
-
-          <div class="divider"></div>
-
-          <div class="row flex-lg-row-reverse align-items-center p-5">
-            <div class="col-6">
-              <img src="./assets/images/terminal-off.png" class="d-block mx-lg-auto img-fluid img" alt="player"
-                width="100" height="100" loading="lazy" />
-            </div>
-            <div class="col">
-              <h1 class="display-5 fw-bold">Images</h1>
-              <p>
-                Images displayed in the game area may have an event attached to them that activates when the image
-                is clicked. These images will gain an orange outline when hovered over or when the "highlight" button
-                is
-                clicked.
-                The "highlight" button is represented by a magnifying glass and sits in the top right corner of the
-                game
-                area.
-              </p>
-            </div>
-          </div>
-
-          <div class="divider"></div>
-
-          <div class="row flex-lg-row align-items-center p-5">
-            <div class="col-6">
-              <div class="input-group w-50 mb-3">
-                <input type="text" placeholder="Text" class="form-control input-green">
-                <div class="input-group-append"></div>
-                <input type="button" id="username" value="Enter" class="btn btn-green">
+          <div class="container col-8 px-4 py-5">
+            <div class="row align-items-center g-5 py-5">
+              <div class="col-10 col-sm-8 col-lg-6">
+                <img src="./assets/images/playerstand.png" class="d-block mx-lg-auto img-fluid" alt="player" width="100"
+                  height="100" loading="lazy" />
               </div>
-              <div class="input-group w-50">
-                <input type="text" placeholder="Text" class="form-control input-green input-error">
-                <div class="input-group-append input-error"></div>
-                <input type="button" id="username" value="Enter" class="btn btn-green input-error">
+              <div class="col-lg-6">
+                <h1 class="display-5 fw-bold">About</h1>
+                <p class="fs-6">
+                  Cave is a browser-based choose your own adventure game, created for my Web Technologies coursework.
+                  The goal of the game is to escape the cave, that the player has found themselves in, with data from a
+                  terminal that sits in the cave.
+                  The choices you make throughout the game affect your future choices and the overall outcome of the
+                  story.
+                </p>
               </div>
             </div>
-            <div class="col">
-              <h1 class="display-5 fw-bold">Text Input</h1>
-              <p>
-                Text Input is handled by a text box and submit button. You are required to input at least 1 character
-                into a text box. A red outline will appear around the element if an invalid value is entered.
-              </p>
+          </div>
+
+          <div class="divider"></div>
+
+          <div class="container col-8 px-4 py-5">
+            <div class="align-items-center g-5 py-5">
+              <div class="col-lg-6">
+                <h1 class="display-5 fw-bold">Instructions</h1>
+                <p class="fs-6">
+                  The game is split into two areas. The "game area" where the pictures are display,
+                  and the "messages" where any decisions and text is displayed.
+                </p>
+              </div>
             </div>
           </div>
 
           <div class="divider"></div>
 
-          <div class="row flex-lg-row-reverse align-items-center p-5">
-            <div class="col-6">
-              <div id="attributeChoice" class="btn-group-vertical btn-group mb-3">
-                <input type="button" value="(PER) Choice one." class="btn btn-green">
-                <input type="button" value="(STR) Choice two." class="btn btn-green">
-                <input type="button" value="(LUC) Choice three." class="btn btn-green">
-                <input type="button" value="Choice four." class="btn btn-green">
+          <div class="container col-8 px-4 py-5">
+            <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+              <div class="col-10 col-sm-8 col-lg-6">
+                <img src="./assets/images/terminal-off.png" class="d-block mx-lg-auto img-fluid img" alt="player"
+                  width="100" height="100" loading="lazy" />
               </div>
-            </div>
-            <div class="col">
-              <h1 class="display-5 fw-bold">Choices</h1>
-              <p class="fs-6">
-                Player choices are displayed as a stacked group of buttons. If a choice has (PER), (STR) or (LUC) at
-                the
-                start of the text then it is only being displayed because of the players primary attribute, a value
-                set near the start of the game.
-              </p>
+              <div class="col-lg-6">
+                <h1 class="display-5 fw-bold">Images</h1>
+                <p class="fs-6">
+                  Images displayed in the game area may have an event attached to them that activates when the image
+                  is clicked. These images will gain an orange outline when hovered over or when the "highlight" button
+                  is
+                  clicked.
+                  The "highlight" button is represented by a magnifying glass and sits in the top right corner of the
+                  game
+                  area.
+                </p>
+              </div>
             </div>
           </div>
 
           <div class="divider"></div>
 
-          <div class="row flex-lg-row align-items-center p-5">
-            <div class="col-6">
-              <div>
-                <span id="timer" class="display-5 fw-bold px-5">
-                  100s
-                </span>
+          <div class="container col-8 px-4 py-5">
+            <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+              <div class="col-10 col-sm-8 col-lg-6">
+                <div class="input-group w-50 mb-3">
+                  <input type="text" placeholder="Text" class="form-control input-green">
+                  <div class="input-group-append"></div>
+                  <input type="button" id="username" value="Enter" class="btn btn-green">
+                </div>
+                <div class="input-group w-50">
+                  <input type="text" placeholder="Text" class="form-control input-green input-error">
+                  <div class="input-group-append input-error"></div>
+                  <input type="button" id="username" value="Enter" class="btn btn-green input-error">
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <h1 class="display-5 fw-bold">Text Input</h1>
+                <p class="fs-6">
+                  Text Input is handled by a text box and submit button. You are required to input at least 1 character
+                  into a text box. A red outline will appear around the element if an invalid value is entered.
+                </p>
               </div>
             </div>
-            <div class="col">
-              <h1 class="display-5 fw-bold">Timer</h1>
-              <p class="fs-6">
-                At a certain point in the game there is a timer that starts. This is only visible if the player
-                has made certain choices up to this point. If the timer reaches 0, whether it is being displayed
-                or not, the choice will be taken away from the player.
-              </p>
+          </div>
+
+          <div class="divider"></div>
+
+          <div class="container col-8 px-4 py-5">
+            <div class="row align-items-center g-5 py-5">
+              <div class="col-10 col-sm-8 col-lg-6">
+                <div id="attributeChoice" class="btn-group-vertical btn-group mb-3">
+                  <input type="button" value="(PER) Choice one." class="btn btn-green">
+                  <input type="button" value="(STR) Choice two." class="btn btn-green">
+                  <input type="button" value="(LUC) Choice three." class="btn btn-green">
+                  <input type="button" value="Choice four." class="btn btn-green">
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <h1 class="display-5 fw-bold">Choices</h1>
+                <p class="fs-6">
+                  Player choices are displayed as a stacked group of buttons. If a choice has (PER), (STR) or (LUC) at
+                  the
+                  start of the text then it is only being displayed because of the players primary attribute, a value
+                  set near the start of the game.
+                </p>
+              </div>
             </div>
           </div>
+
+          <div class="divider"></div>
+
+          <div class="container col-8 px-4 py-5">
+            <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+              <div class="col-10 col-sm-8 col-lg-6">
+                <div>
+                  <span id="timer" class="display-5 fw-bold px-5">
+                    100s
+                  </span>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <h1 class="display-5 fw-bold">Timer</h1>
+                <p class="fs-6">
+                  At a certain point in the game there is a timer that starts. This is only visible if the player
+                  has made certain choices up to this point. If the timer reaches 0, whether it is being displayed
+                  or not, the choice will be taken away from the player.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <script type="text/javascript">
+            $(document).ready(function () {
+              var countdown;
+              var count = 100;
+              Cave.countdown = setInterval(function () {
+                count = count - 1;
+                $("span#timer").html(count + "s");
+                if (count == 0) {
+                  clearInterval(Cave.countdown);
+                }
+              }, 1000);
+            });
+          </script>
+
         </div>
       </div>
     </div>
@@ -194,20 +228,6 @@
         <span class="text-muted">Ewan Robertson 40451077</span>
       </div>
     </footer>
-
-    <script type="text/javascript">
-      $(document).ready(function () {
-        var countdown;
-        var count = 100;
-        Cave.countdown = setInterval(function () {
-          count = count - 1;
-          $("span#timer").html(count + "s");
-          if (count == 0) {
-            clearInterval(Cave.countdown);
-          }
-        }, 1000);
-      });
-    </script>
 
 </body>
 
