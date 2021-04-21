@@ -7,18 +7,18 @@ var Cave = {
     countdown: null,
 
     // adds a paragraph to the messages area
-    addmessage: function (text) {
+    addMessage: function (text) {
         $("<p>").html(text).addClass("typewriter").prependTo("div#msgs");
         setTimeout(function () { $("div#msgs").find(">:first-child").removeClass("typewriter") }, 2900);
     },
 
     // plays audio element with name in src
-    playsound: function (src) {
+    playSound: function (src) {
         $("audio#" + src)[0].play();
     },
 
     // loads gamesettings into the page
-    loadsettings: function () {
+    loadSettings: function () {
         if (sessionStorage.getItem("audio") == "off") {
             Cave.mute();
         }
@@ -44,7 +44,7 @@ var Cave = {
         sessionStorage.removeItem("ratone");
         sessionStorage.removeItem("rattwo");
         $("#terminal").on("click", Cave.start);
-        Cave.addmessage("The room is pitch-black, you see a terminal through the darkness.");
+        Cave.addMessage("The room is pitch-black, you see a terminal through the darkness.");
         $("img#arrow").hover(Cave.arrowHover, function () {
             Cave.arrow = setInterval(Cave.arrowFlicker, 500);
         });
@@ -56,7 +56,7 @@ var Cave = {
         $("img#terminal").off("click").removeClass("img").removeClass("clickable");
         $("img#player").toggle();
         $("div#gameArea").addClass("cave-background");
-        Cave.addmessage("You turn on the terminal...");
+        Cave.addMessage("You turn on the terminal...");
         Terminal.startTerminal();
         Player.inputUsername();
     },
@@ -80,8 +80,8 @@ var Cave = {
     newRoom: function (option) {
         Player.move();
         $("img#arrow").toggle();
-        Cave.playsound("steps");
-        Cave.addmessage("You continue through the cave...");
+        Cave.playSound("steps");
+        Cave.addMessage("You continue through the cave...");
         setTimeout(function () {
             $("div#gameArea").children().hide();
             $("img#magnify").toggle();
@@ -94,14 +94,14 @@ var Cave = {
     // initialises room two
     roomTwoInit: function () {
         Rat.init("small");
-        Cave.addmessage("There is a small rat blocking the way forward.");
+        Cave.addMessage("There is a small rat blocking the way forward.");
         Cave.timer();
     },
 
     // initialises room three
     roomThreeInit: function () {
-        Cave.addmessage("The room is empty...");
-        $("img#rock").on("click", function () { Rock.checkrock() }).toggle();
+        Cave.addMessage("The room is empty...");
+        $("img#rock").on("click", function () { Rock.check() }).toggle();
         if (Player.attribute != "str") {
             $("img#rock").addClass("img");
             if (Player.attribute == "per") {
@@ -114,7 +114,7 @@ var Cave = {
     // initialises room four
     roomFourInit: function () {
         Rat.init("big");
-        Cave.addmessage("There is a rat blocking the way, it's much bigger than the last one.");
+        Cave.addMessage("There is a rat blocking the way, it's much bigger than the last one.");
     },
 
     // switches classes on room exit arrow to change size
@@ -133,8 +133,8 @@ var Cave = {
     },
 
     // ends game on loss condition
-    gameloss: function () {
-        Cave.playsound("scream");
+    gameLoss: function () {
+        Cave.playSound("scream");
         sessionStorage.setItem("result", "loss");
         new Create.Link({
             address: "./gameend.html",
@@ -142,7 +142,7 @@ var Cave = {
     },
 
     // ends game on win condition
-    gamewin: function () {
+    gameWin: function () {
         sessionStorage.setItem("result", "win");
         new Create.Link({
             address: "./gameend.html",
@@ -161,15 +161,15 @@ var Cave = {
             }
             if (count == 0) {
                 clearInterval(Cave.countdown);
-                Rat.runaway();
+                Rat.runAway();
                 $("div#actions").children().not("#msgs").remove();
-                Cave.addmessage("The rat gets bored and runs away.");
+                Cave.addMessage("The rat gets bored and runs away.");
             }
         }, 1000);
     },
 
     // stops timer
-    stoptimer: function () {
+    stopTimer: function () {
         clearInterval(Cave.countdown);
     },
 };

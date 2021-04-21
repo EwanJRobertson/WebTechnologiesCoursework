@@ -132,6 +132,10 @@ audio, #player, #arrow, #rat, #bat, #rock, #pistol {
   background-color: rgba(0, 0, 0, .1);
 }
 
+/*
+The following code has been adapted from CSS tricks
+https://css-tricks.com/snippets/css/typewriter-effect/ 
+*/
 .typewriter {
   overflow: hidden; /* Ensures the content is not revealed until the animation */
   border-right: .15em solid transparent; /* The typwriter cursor */

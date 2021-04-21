@@ -31,24 +31,24 @@ var Rat = {
         if (Player.attribute == "str") {
             choices.push({
                 text: "Attack the rat", click: function () {
-                    Cave.addmessage("You defeat the rat using your strength.");
+                    Cave.addMessage("You defeat the rat using your strength.");
                     $("img#rat").toggle();
-                    Cave.stoptimer();
+                    Cave.stopTimer();
                     $("div#ratChoice").remove();
-                    Cave.playsound("rat");
+                    Cave.playSound("rat");
                     sessionStorage.setItem("ratone", "attack");
-                    $("img#bat").on("click", function () { Bat.pickupBat() }).toggle();
+                    $("img#bat").on("click", function () { Bat.pickup() }).toggle();
                     Cave.roomExit(function () { Cave.roomThreeInit() });
                 }
             });
         } else {
             choices.push({
                 text: "Attack the rat", click: function () {
-                    Cave.addmessage("You are no match for even this small rat...");
-                    Cave.stoptimer();
+                    Cave.addMessage("You are no match for even this small rat...");
+                    Cave.stopTimer();
                     $("div#ratChoice").remove();
                     sessionStorage.setItem("ratone", "attack");
-                    setTimeout(function () { Cave.gameloss() }, 3000);
+                    setTimeout(function () { Cave.gameLoss() }, 3000);
                 }
             });
         }
@@ -56,13 +56,13 @@ var Rat = {
             choices.push({
                 text: "(LUC) Scare the rat", click: function () {
                     $("img#rat").toggle();
-                    Cave.stoptimer();
+                    Cave.stopTimer();
                     $("div#ratChoice").remove();
-                    Cave.addmessage("You raise your arms and roar towards the rat...");
-                    setTimeout(function () { Cave.addmessage("luckily it sees the large shadow you case against the cave wall and gets spooked.") }, 2000);
-                    Cave.playsound("rat");
+                    Cave.addMessage("You raise your arms and roar towards the rat...");
+                    setTimeout(function () { Cave.addMessage("luckily it sees the large shadow you case against the cave wall and gets spooked.") }, 2000);
+                    Cave.playSound("rat");
                     sessionStorage.setItem("ratone", "scare");
-                    $("img#bat").on("click", function () { Bat.pickupBat() }).toggle();
+                    $("img#bat").on("click", function () { Bat.pickup() }).toggle();
                     Cave.roomExit(function () { Cave.roomThreeInit() });
                 }
             });
@@ -78,19 +78,19 @@ var Rat = {
         if (Player.attribute == "str") {
             choices.push({
                 text: "(STR) Throw a rock at the rat.", click: function () {
-                    Cave.addmessage("The rat appears injured.");
-                    Cave.playsound("stone");
+                    Cave.addMessage("The rat appears injured.");
+                    Cave.playSound("stone");
                     $("input#ratChoice0").off("click").on("click", function () {
-                        Cave.addmessage("There are no more loose rocks.");
+                        Cave.addMessage("There are no more loose rocks.");
                     });
                     if (Player.inventory.includes("bat")) {
                         $("input#ratChoice1").off("click").on("click", function () {
                             $("div#ratChoice").remove();
-                            Cave.playsound("rat");
-                            Cave.playsound("bat");
+                            Cave.playSound("rat");
+                            Cave.playSound("bat");
                             sessionStorage.setItem("rattwo", "strrockbat");
-                            Cave.addmessage("The rat scarpers away to lick its wounds, allowing you to pass.");
-                            setTimeout(function () { Cave.gamewin() }, 3000);
+                            Cave.addMessage("The rat scarpers away to lick its wounds, allowing you to pass.");
+                            setTimeout(function () { Cave.gameWin() }, 3000);
                         });
                     }
                 }
@@ -100,12 +100,12 @@ var Rat = {
         if (Player.attribute == "str" && Player.inventory.includes("bat")) {
             choices.push({
                 text: "(STR) Attack the rat using the bat you found.", click: function () {
-                    Cave.playsound("rat");
-                    Cave.playsound("bat");
+                    Cave.playSound("rat");
+                    Cave.playSound("bat");
                     sessionStorage.setItem("rattwo", "strbat");
                     $("div#ratChoice").remove();
-                    Cave.addmessage("The rat is too nimble and you are quickly beaten.");
-                    setTimeout(function () { Cave.gameloss() }, 3000);
+                    Cave.addMessage("The rat is too nimble and you are quickly beaten.");
+                    setTimeout(function () { Cave.gameLoss() }, 3000);
                 }
             });
         }
@@ -114,11 +114,11 @@ var Rat = {
             choices.push({
                 text: "(LUC) Wave a large stick at the rat.", click: function () {
                     $("div#ratChoice").remove();
-                    Cave.playsound("rat");
+                    Cave.playSound("rat");
                     sessionStorage.setItem("rattwo", "lucstick");
-                    Cave.addmessage("The rat appears disoriented by the substance on the end of the stick.")
-                    setTimeout(function () { Cave.addmessage("It watches from a distance as it lets you pass.") }, 2000);
-                    setTimeout(function () { Cave.gamewin() }, 3000);
+                    Cave.addMessage("The rat appears disoriented by the substance on the end of the stick.")
+                    setTimeout(function () { Cave.addMessage("It watches from a distance as it lets you pass.") }, 2000);
+                    setTimeout(function () { Cave.gameWin() }, 3000);
                 }
             });
         }
@@ -127,12 +127,12 @@ var Rat = {
             choices.push({
                 text: "(LUC) Fire the pistol you found.", click: function () {
                     $("div#ratChoice").remove();
-                    Cave.playsound("shot");
+                    Cave.playSound("shot");
                     sessionStorage.setItem("rattwo", "lucpistol");
-                    setTimeout(function () { Cave.playsound("rat") }, 750);
-                    Cave.addmessage("You shoot but miss. The bullet ricochets of the roof cause a large spark to fall into an oil pool.")
-                    setTimeout(function () { Cave.addmessage("The rat jumps into a puddle to cool off, allowing you to pass.") }, 2000);
-                    setTimeout(function () { Cave.gamewin() }, 3000);
+                    setTimeout(function () { Cave.playSound("rat") }, 750);
+                    Cave.addMessage("You shoot but miss. The bullet ricochets of the roof cause a large spark to fall into an oil pool.")
+                    setTimeout(function () { Cave.addMessage("The rat jumps into a puddle to cool off, allowing you to pass.") }, 2000);
+                    setTimeout(function () { Cave.gameWin() }, 3000);
                 }
             });
         }
@@ -142,8 +142,8 @@ var Rat = {
                 text: "(LUC) Attack the rat using the bat you found.", click: function () {
                     $("div#ratChoice").remove();
                     sessionStorage.setItem("rattwo", "lucbat");
-                    Cave.addmessage("The rat is too nimble and you are quickly beaten.");
-                    setTimeout(function () { Cave.gameloss() }, 3000);
+                    Cave.addMessage("The rat is too nimble and you are quickly beaten.");
+                    setTimeout(function () { Cave.gameLoss() }, 3000);
                 }
             });
         }
@@ -152,11 +152,11 @@ var Rat = {
             choices.push({
                 text: "(PER) Fire the pistol you found.", click: function () {
                     $("div#ratChoice").remove();
-                    Cave.playsound("shot");
+                    Cave.playSound("shot");
                     sessionStorage.setItem("rattwo", "perpistol");
-                    setTimeout(function () { Cave.playsound("rat") }, 750);
-                    Cave.addmessage("You take aim and pull the trigger... bullseye.");
-                    setTimeout(function () { Cave.gamewin() }, 3000);
+                    setTimeout(function () { Cave.playSound("rat") }, 750);
+                    Cave.addMessage("You take aim and pull the trigger... bullseye.");
+                    setTimeout(function () { Cave.gameWin() }, 3000);
                 }
             });
         }
@@ -164,11 +164,11 @@ var Rat = {
         if (Player.attribute == "per") {
             choices.push({
                 text: "(PER) Attempt to distract the rat with a loud noise.", click: function () {
-                    Cave.playsound("stone");
+                    Cave.playSound("stone");
                     sessionStorage.setItem("rattwo", "pernoise");
                     $("div#ratChoice").remove();
-                    Cave.addmessage("The rat quickly traces the source of the noise back to you.");
-                    setTimeout(function () { Cave.gameloss() }, 3000);
+                    Cave.addMessage("The rat quickly traces the source of the noise back to you.");
+                    setTimeout(function () { Cave.gameLoss() }, 3000);
                 }
             });
         }
@@ -178,8 +178,8 @@ var Rat = {
                 text: "Attempt to sneak past the rat.", click: function () {
                     sessionStorage.setItem("rattwo", "sneak");
                     $("div#ratChoice").remove();
-                    Cave.addmessage("The successfully sneak past the rat.");
-                    setTimeout(function () { Cave.gamewin() }, 3000);
+                    Cave.addMessage("The successfully sneak past the rat.");
+                    setTimeout(function () { Cave.gameWin() }, 3000);
                 }
             });
         } else {
@@ -187,8 +187,8 @@ var Rat = {
                 text: "Attempt to sneak past the rat.", click: function () {
                     sessionStorage.setItem("rattwo", "sneak");
                     $("div#ratChoice").remove();
-                    Cave.addmessage("The rat smells you out quickly.");
-                    setTimeout(function () { Cave.gameloss() }, 3000);
+                    Cave.addMessage("The rat smells you out quickly.");
+                    setTimeout(function () { Cave.gameLoss() }, 3000);
                 }
             });
         }
@@ -197,11 +197,11 @@ var Rat = {
     },
 
     // handles rat behaviour when timer runs out
-    runaway: function () {
+    runAway: function () {
         $("img#rat").off("click").toggle();
         Bat.condition = "bad";
         sessionStorage.setItem("ratone", "wait")
-        $("img#bat").on("click", function () { Bat.pickupBat() }).toggle();
+        $("img#bat").on("click", function () { Bat.pickup() }).toggle();
         Cave.roomExit(function () { Cave.roomThreeInit() })
     },
 }
@@ -235,12 +235,12 @@ var Bat = {
     condition: "good",
 
     // checks bat condition, if good adds to player inventory
-    pickupBat: function () {
+    pickup: function () {
         if (Bat.condition == "good") {
             Player.inventory.push("bat");
-            Cave.addmessage("You pickup the baseball bat, it seems sturdy enough.");
+            Cave.addMessage("You pickup the baseball bat, it seems sturdy enough.");
         } else {
-            Cave.addmessage("You attempt to pickup the baseball bat, it crumbles in your hands.");
+            Cave.addMessage("You attempt to pickup the baseball bat, it crumbles in your hands.");
         }
         $("img#bat").toggle();
     }
@@ -250,17 +250,17 @@ var Bat = {
 var Rock = {
 
     // reveals pistol depending on player attribute
-    checkrock: function () {
+    check: function () {
         if (Player.attribute != "str") {
             $("img#pistol").on("click", function () { Pistol.pickup() }).toggle();
             $("img#rock").toggle();
             if (Player.attribute == "per") {
-                Cave.addmessage("You find a pistol behind the rock.");
+                Cave.addMessage("You find a pistol behind the rock.");
             } else {
-                Cave.addmessage("You trip and fall but find a pistol behind the rock.");
+                Cave.addMessage("You trip and fall but find a pistol behind the rock.");
             }
         } else {
-            Cave.addmessage("You don't find anything.");
+            Cave.addMessage("You don't find anything.");
         }
     }
 }
@@ -271,7 +271,7 @@ var Pistol = {
     // adds pistol to player inventory
     pickup: function () {
         Player.inventory.push("pistol");
-        Cave.addmessage("You take the pistol.");
+        Cave.addMessage("You take the pistol.");
         $("img#pistol").toggle();
     }
 }

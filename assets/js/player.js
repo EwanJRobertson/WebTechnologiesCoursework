@@ -20,11 +20,11 @@ var Player = {
 
     // handles input validation for player name and sets local storage item name
     submitUsername: function () {
-        Cave.playsound("typing");
+        Cave.playSound("typing");
         if ($("input#tb-username").val().length != 0) {
             var user = $("input#tb-username").val();
             $("div#ig-username").children().removeClass("input-error");
-            Cave.addmessage("'Welcome " + user + "'");
+            Cave.addMessage("'Welcome " + user + "'");
             sessionStorage.setItem("name", user);
             $("div#ig-username").remove();
             setTimeout(function () { Player.getAttribute() }, 3000);
@@ -35,13 +35,13 @@ var Player = {
 
     // creates input for player attribute
     getAttribute: function () {
-        Cave.addmessage("'Please enter your password:'");
+        Cave.addMessage("'Please enter your password:'");
         new Create.Choice({
             id: "attributeChoice",
             count: "3",
-            choices: [{ text: "(PER) Look around...", click: function () { Cave.playsound("typing"); Player.setAttribute({ choice: "per", msg: "You notice the password written on the ceiling" }) } },
+            choices: [{ text: "(PER) Look around...", click: function () { Cave.playSound("typing"); Player.setAttribute({ choice: "per", msg: "You notice the password written on the ceiling" }) } },
             { text: "(STR) Disable terminal...", click: function () { Player.setAttribute({ choice: "str", msg: "You pull the harddrive out" }) } },
-            { text: "(LUC) Guess password...", click: function () { Cave.playsound("typing"); Player.setAttribute({ choice: "luc", msg: "You guess the password" }) } }],
+            { text: "(LUC) Guess password...", click: function () { Cave.playSound("typing"); Player.setAttribute({ choice: "luc", msg: "You guess the password" }) } }],
         }).prependTo("#actions");
     },
 
@@ -50,7 +50,7 @@ var Player = {
         Player.attribute = options.choice;
         sessionStorage.setItem("attribute", Player.attribute);
         $("#attributeChoice").remove();
-        Cave.addmessage(options.msg + " and have successfully obtained the data.");
+        Cave.addMessage(options.msg + " and have successfully obtained the data.");
         Cave.roomExit(function () { Cave.roomTwoInit() });
     },
 
