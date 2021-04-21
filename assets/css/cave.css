@@ -1,0 +1,152 @@
+audio, #player, #arrow, #rat, #bat, #rock, #pistol {
+  display: none;
+}
+
+#terminal {
+  top: 50%;
+  left: 50%;
+}
+
+#magnify {
+  top: 5%;
+  right: 5%;
+}
+
+#player {
+  top: 40%;
+  left: 40%;
+  transition: left 3s ;
+}
+#player.moved {
+  left:80%;
+}
+
+#arrow {
+  top: 40%;
+  right: 10%;
+}
+#arrow.small {
+  height: 25px;
+  width: 25px;
+}
+#arrow.big {
+  height: 50px;
+  width: 50px;
+}
+
+#rat {
+  top: 55%;
+  right: 20%;
+}
+#rat.small {
+  height: 26px;
+  width: 68px;
+}
+#rat.big {
+  height: 52px;
+  width: 136px;
+  top: 50%;
+}
+
+#bat {
+  top: 50%;
+  right: 20%;
+}
+
+#rock {
+  top: 50%;
+  right: 20%;
+}
+
+#pistol {
+  top: 50%;
+  right: 20%;
+}
+
+.area {
+  color: #4cee4c;
+  border: 1px solid #6c757d;
+  border-radius: 5px;
+}
+
+.game-height {
+  height: 350px;
+ }
+
+.game-icon {
+  position: absolute;
+}
+
+.img:hover, .highlight {
+  cursor: pointer;
+  outline-style: solid;
+  outline-width: 2pt;
+  outline-color: orange;
+}
+
+.cave-background {
+  background-image: url('../images/background-image.png');
+  background-repeat: repeat-x;
+  background-position-y: 77%;
+}
+
+.btn-green, .input-green {
+  border: 1px solid #6c757d;
+  border-radius: 5px;
+  background-color: #212529 !important;
+  color: #4cee4c;
+}
+
+.btn-green:hover, .btn-green:focus {
+  border-color: orange;
+  color: orange;
+}
+
+.input-green:focus {
+  color: #4cee4c;
+}
+
+.input-error {
+  border-color: red !important;
+}
+
+.cave-error {
+  outline-width: 2pt;
+  outline-style: solid;
+  outline-color: red;
+}
+
+.msgs-overflow {
+  overflow-y: scroll;
+}
+
+.img:hover {
+  cursor: pointer;
+  outline-width: 2pt;
+  outline-style: solid;
+  outline-color: orange;
+}
+
+.divider {
+  height: 3rem;
+  background-color: rgba(0, 0, 0, .1);
+}
+
+.typewriter {
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  border-right: .15em solid transparent; /* The typwriter cursor */
+  white-space: nowrap; /* Keeps the content on a single line */
+  animation: 
+    typing 3.5s steps(100, end),
+    blink-caret .75s step-end 3;
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: #4cee4c;}
+  50% { border-color: transparent; }
+}

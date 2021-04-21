@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" class="h-100">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="author" content="Ewan Robertson" />
+
+  <title>Cave</title>
+  <link rel="icon" href="./assets/images/terminal-on.png" />
+
+  <link href="./assets/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="./assets/css/cave.css" rel="stylesheet" />
+
+  <script type="text/javascript" src="./assets/js/jquery-3.6.0.min.js"></script>
+  <script type="text/javascript" src="./assets/js/cave.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      Cave.loadsettings();
+    });
+  </script>
+</head>
+
+<body class="d-flex flex-column h-100 bg-dark text-white">
+  <svg style="display: none">
+    <symbol id="home" viewBox="0 0 16 16">
+      <path fill="#fff"
+        d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146zM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4H2.5z" />
+    </symbol>
+    <symbol id="volume-on" viewBox="0 0 16 16">
+      <path fill="#fff"
+        d="M11.536 14.01A8.473 8.473 0 0 0 14.026 8a8.473 8.473 0 0 0-2.49-6.01l-.708.707A7.476 7.476 0 0 1 13.025 8c0 2.071-.84 3.946-2.197 5.303l.708.707z" />
+      <path fill="#fff"
+        d="M10.121 12.596A6.48 6.48 0 0 0 12.025 8a6.48 6.48 0 0 0-1.904-4.596l-.707.707A5.483 5.483 0 0 1 11.025 8a5.483 5.483 0 0 1-1.61 3.89l.706.706z" />
+      <path fill="#fff"
+        d="M8.707 11.182A4.486 4.486 0 0 0 10.025 8a4.486 4.486 0 0 0-1.318-3.182L8 5.525A3.489 3.489 0 0 1 9.025 8 3.49 3.49 0 0 1 8 10.475l.707.707zM6.717 3.55A.5.5 0 0 1 7 4v8a.5.5 0 0 1-.812.39L3.825 10.5H1.5A.5.5 0 0 1 1 10V6a.5.5 0 0 1 .5-.5h2.325l2.363-1.89a.5.5 0 0 1 .529-.06z" />
+    </symbol>
+    <symbol id="volume-off" viewBox="0 0 16 16">
+      <path fill="#fff"
+        d="M6.717 3.55A.5.5 0 0 1 7 4v8a.5.5 0 0 1-.812.39L3.825 10.5H1.5A.5.5 0 0 1 1 10V6a.5.5 0 0 1 .5-.5h2.325l2.363-1.89a.5.5 0 0 1 .529-.06zm7.137 2.096a.5.5 0 0 1 0 .708L12.207 8l1.647 1.646a.5.5 0 0 1-.708.708L11.5 8.707l-1.646 1.647a.5.5 0 0 1-.708-.708L10.793 8 9.146 6.354a.5.5 0 1 1 .708-.708L11.5 7.293l1.646-1.647a.5.5 0 0 1 .708 0z" />
+    </symbol>
+  </svg>
+
+  <header class="py-3 mb-4 border-bottom">
+    <div class="container text-center">
+      <span class="fs-4">Cave - The Game</span>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <div class="d-flex">
+        <div class="flex-column" style="width: 4.5rem">
+          <ul class="nav nav-flush flex-column mb-auto text-center">
+            <li class="nav-item">
+              <a href="./index.html" class="nav-link active py-3" title="Home">
+                <svg class="bi" width="24" height="24">
+                  <use xlink:href="#home" />
+                </svg>
+              </a>
+            </li>
+            <li>
+              <a href="#" id="audiomute" onclick="Cave.mute();" class="nav-link py-3" title="Audio">
+                <svg class="bi" width="24" height="24">
+                  <use xlink:href="#volume-on" />
+                </svg>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="flex-column flex-grow-1">
+          <div class="cave-styling text-center area game-height">
+            <div class="row align-items-center">
+              <div class="col-12 align-self-center p-5">
+                <a href="game.html" class="btn btn-green btn-lg px-4 fs-1 fw-bold">Play</a>
+              </div>
+              <div class="col-12 align-self-center">
+                <a href="about.html" class="btn btn-green px-4">About and Instructions</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer mt-auto py-3 bg-light">
+    <div class="container text-center">
+      <span class="text-muted">Ewan Robertson 40451077</span>
+    </div>
+  </footer>
+</body>
+
+</html>
