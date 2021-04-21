@@ -25,7 +25,7 @@ var Player = {
             var user = $("input#tb-username").val();
             $("div#ig-username").children().removeClass("input-error");
             Cave.addmessage("'Welcome " + user + "'");
-            localStorage.setItem("name", user);
+            sessionStorage.setItem("name", user);
             $("div#ig-username").remove();
             setTimeout(function () { Player.getAttribute() }, 3000);
         } else {
@@ -48,7 +48,7 @@ var Player = {
     // sets player attribute to player choice
     setAttribute: function (options) {
         Player.attribute = options.choice;
-        localStorage.setItem("attribute", Player.attribute);
+        sessionStorage.setItem("attribute", Player.attribute);
         $("#attributeChoice").remove();
         Cave.addmessage(options.msg + " and have successfully obtained the data.");
         Cave.roomExit(function () { Cave.roomTwoInit() });

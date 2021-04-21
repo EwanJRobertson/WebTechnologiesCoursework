@@ -7,12 +7,12 @@
   <title>Cave</title>
   <link rel="icon" href="./assets/images/terminal-on.png">
 
-  <link href="./assets/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="./assets/dist/css/cave.css" rel="stylesheet">
+  <link href="./assets/css/bootstrap.min.css" rel="stylesheet">
+  <link href="./assets/css/cave.css" rel="stylesheet">
 
-  <script type="text/javascript" src="./assets/jquery-3.6.0.min.js"></script>
-  <script type="text/javascript" src="./assets/dist/js/cave.js"></script>
-  <script type="text/javascript" src="./assets/dist/js/gameend.js"></script>
+  <script type="text/javascript" src="./assets/js/jquery-3.6.0.min.js"></script>
+  <script type="text/javascript" src="./assets/js/cave.js"></script>
+  <script type="text/javascript" src="./assets/js/gameend.js"></script>
 
   <script type="text/javascript">
     $(document).ready(function () {
@@ -23,8 +23,7 @@
 
 </head>
 
-<body class="d-flex flex-column h-100 bg-dark text-white msgs-overflow">
-
+<body class="d-flex flex-column h-100 bg-dark text-white">
   <svg style="display: none;">
     <symbol id="home" viewBox="0 0 16 16">
       <path fill="#fff"
@@ -56,8 +55,7 @@
         <div class="flex-column" style="width: 4.5rem;">
           <ul class="nav nav-flush flex-column mb-auto text-center">
             <li class="nav-item">
-              <a href="./index.html" class="nav-link active py-3" title="Home" data-bs-toggle="tooltip"
-                data-bs-placement="right">
+              <a href="./index.html" class="nav-link active py-3" title="Home">
                 <svg class="bi" width="24" height="24">
                   <use xlink:href="#home" />
                 </svg>
@@ -74,13 +72,9 @@
           </ul>
         </div>
 
-        <div id="mainArea" class="flex-column flex-grow-1 mb-4">
-          <div class="px-4 py-5 ">
-            <div class="row align-items-center g-5 py-5">
-              <h1 id="result" class="display-5 fw-bold">Game</h1>
-              <div id="msgs" class="fs-6"></div>
-            </div>
-          </div>
+        <div class="flex-column flex-grow-1 mb-4 area game-height p-3">
+          <h1 id="result" class="display-5 fw-bold">Game</h1>
+          <div id="msgs" class="fs-6"></div>
         </div>
       </div>
     </div>

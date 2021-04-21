@@ -38,11 +38,11 @@ var Cave = {
 
     // initialises main game
     init: function () {
-        localStorage.removeItem("name");
-        localStorage.removeItem("result");
-        localStorage.removeItem("attribute");
-        localStorage.removeItem("ratone");
-        localStorage.removeItem("rattwo");
+        sessionStorage.removeItem("name");
+        sessionStorage.removeItem("result");
+        sessionStorage.removeItem("attribute");
+        sessionStorage.removeItem("ratone");
+        sessionStorage.removeItem("rattwo");
         $("#terminal").on("click", Cave.start);
         Cave.addmessage("The room is pitch-black, you see a terminal through the darkness.");
         $("img#arrow").hover(Cave.arrowHover, function () {
@@ -135,7 +135,7 @@ var Cave = {
     // ends game on loss condition
     gameloss: function () {
         Cave.playsound("scream");
-        localStorage.setItem("result", "loss");
+        sessionStorage.setItem("result", "loss");
         new Create.Link({
             address: "./gameend.html",
         }).prependTo("#actions");
@@ -143,7 +143,7 @@ var Cave = {
 
     // ends game on win condition
     gamewin: function () {
-        localStorage.setItem("result", "win");
+        sessionStorage.setItem("result", "win");
         new Create.Link({
             address: "./gameend.html",
         }).prependTo("#actions");
